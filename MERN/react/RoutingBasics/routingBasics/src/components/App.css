@@ -1,0 +1,42 @@
+.holo-btn {
+  position: relative;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background: #000080; /* Navy Blue base */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.holo-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* Hologram shimmer effect */
+.holo-btn::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(16, 185, 129, 0.4) 50%, /* Emerald Green hologram sweep */
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg) translateX(-100%);
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.3s ease;
+}
+
+.holo-btn:hover::before {
+  transform: rotate(25deg) translateX(100%);
+  opacity: 1;
+}
