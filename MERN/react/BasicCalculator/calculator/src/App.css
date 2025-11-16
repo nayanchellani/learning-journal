@@ -1,0 +1,25 @@
+*{
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.firstnumberinput{
+    padding: 20px;
+    margin: 10px;
+}       
+
+.secondnumberinput{
+    padding: 20px;
+    margin:10px;
+}
+
+.operatordropdown{
+    padding: 20px;
+    margin:10px;
+}
+.equalsbtn{
+    padding: 10px;
+    margin:10px;
+    margin-left:210px;
+}
+.resultlabel{
+    margin-left: 230px;
+}
