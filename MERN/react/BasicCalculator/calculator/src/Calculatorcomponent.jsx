@@ -47,44 +47,43 @@ function calculateResult(){
 
 
 
-return( 
-    <>
+return (
+  <div className="calc-container">
 
+    <input
+      placeholder="Enter first number"
+      className="firstnumberinput"
+      value={num1}
+      type="number"
+      onChange={updateNum1}
+    />
 
-    <input placeholder="Enter first number" className="firstnumberinput" value = {num1} type = "number" onChange={updateNum1}>
-    </input>
-     
-     <select className="operatordropdown" value={operator} onChange={updateOperator}> 
-        <option value="+">+ </option>
-        <option value="-">- </option>
-        <option value="*">X </option>
-        <option value="/">/ </option>
+    <select
+      className="operatordropdown"
+      value={operator}
+      onChange={updateOperator}
+    >
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">×</option>
+      <option value="/">÷</option>
+    </select>
 
-     </select>
+    <input
+      placeholder="Enter second number"
+      className="secondnumberinput"
+      value={num2}
+      type="number"
+      onChange={updateNum2}
+    />
 
-    <input placeholder="Enter second number" className="secondnumberinput" value = {num2} type = "number" onChange={updateNum2}>
-    </input>
-    <br />
     <button className="equalsbtn" onClick={calculateResult}>
-    CALCULATE
+      CALCULATE
     </button>
-    <h2 className="resultlabel">
-        {result}
-    </h2>
 
-    
+    <h2 className="resultlabel">{result}</h2>
 
-
-
-
-
-
-
-
-
-
-
-    </>
+  </div>
 );
 
 
