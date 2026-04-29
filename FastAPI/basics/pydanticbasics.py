@@ -2,7 +2,7 @@ from pydantic import BaseModel , Field , EmailStr , AnyUrl
 from typing import List , Dict , Optional
 class Patient(BaseModel):
     name: str = Field(max_length=50)
-    age: int
+    age: int = Field(gt=0,lt=60)
     weight: float = 0.0
     married: bool = False
     contact: Dict[str , str]
