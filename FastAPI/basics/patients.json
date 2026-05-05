@@ -48,5 +48,16 @@
         "weight": 75,
         "bmi": 31.22,
         "verdict": "Obese"
+    },
+    "P007": {
+        "id": "P007",
+        "name": "rohit",
+        "city": "kerala",
+        "age": 25,
+        "gender": "male",
+        "height": 1.7,
+        "weight": 69.0,
+        "bmi": 23.88,
+        "verdict": "Normal"
     }
 }
