@@ -12,5 +12,5 @@ formatted_prompt= prompt.format(
     topic='Machine Learning',
     audience='Beginner'
 )
-model= ChatGoogleGenerativeAI(model='models/gemini-3.1-flash')
+model= ChatGoogleGenerativeAI(model='models/gemini-2.5-flash')
 print(model.invoke(formatted_prompt).content)
