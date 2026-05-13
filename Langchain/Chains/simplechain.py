@@ -13,4 +13,4 @@ prompt = PromptTemplate(
 )
 parser = StrOutputParser()
 chain = prompt | model | parser
-print(chain.invoke(print(input('enter topic: '))))
+print(chain.invoke({'topic': input('enter topic : ')}))
