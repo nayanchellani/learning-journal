@@ -8,6 +8,8 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 from dotenv import load_dotenv
+import sys
+
 load_dotenv()
 video_id = "maYMSSdb5Ug" 
 ytt_api = YouTubeTranscriptApi()
@@ -16,10 +18,11 @@ try:
     
     transcript_list = ytt_api.fetch(video_id=video_id, languages=["en"])
     transcript = " ".join(chunk.text for chunk in transcript_list)
-    print(transcript)
+    
 
-except TranscriptsDisabled:
+except Exception as e:
     print("No captions available for this video.")
+    sys.exit(1)
     
 docs= [Document(
     page_content=transcript,
@@ -27,8 +30,8 @@ docs= [Document(
 ) ]
 
 splitter = RecursiveCharacterTextSplitter(
-    chunk_size = 400,
-    chunk_overlap = 50,)
+    chunk_size = 700,
+    chunk_overlap = 100,)
 chunks = splitter.split_documents(docs)
 
 embedding_model = HuggingFaceEmbeddings(
@@ -53,6 +56,12 @@ say: "I could not find that in the transcript.''',
 )
 model = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
 parser = StrOutputParser()
-chain =     ({'context':retriever,'question': RunnablePassthrough()} | prompt | model | parser)
-answer = chain.invoke('Summarise the video in 3 lines and tell me the length of the video')
-print(answer)
+chain =   ({'context':retriever,'question': RunnablePassthrough()} | prompt | model | parser)
+while True:
+    question= input('You: ')
+    print(
+        "Thinking please wait..."
+    )
+    answer = chain.invoke(question)
+    print('Chatbot: ',answer)
+
