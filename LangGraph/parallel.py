@@ -36,3 +36,4 @@ workflow = graph.compile()
 
 initial_state = {'title':'Corruption'}
 print(workflow.invoke(initial_state))
+print(workflow.invoke(initial_state))
