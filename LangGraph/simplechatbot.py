@@ -27,13 +27,20 @@ graph.add_edge('chat_node', END)
 workflow = graph.compile()
 
 
-initial_state = {
-    "messages":[
-        HumanMessage(content=input("You: "))
-    ]
-        
+initial_state: ChatBotState = {
+    "messages":[]    
 }
-workflow.invoke(initial_state)
+print("Chatbot working! Type 'exit' to quit.\n")
+while True:
+    user_input = input("You: ")
+    if user_input.lower() == "exit":
+            print("bye!")
+            break
+    initial_state["messages"].append(HumanMessage(content=user_input))
+    initial_state = workflow.invoke(initial_state)
+   
+        
+
 
 
 
